@@ -1,0 +1,26 @@
+:root {
+    --error-banner-color: #e74c3c;
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --text-color: #333;
+    --background-color: #f4f4f4;
+    --primary-text-color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+}
+.error {
+    background-color: var(--error-banner-color);
+    color: var(--primary-text-color);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
