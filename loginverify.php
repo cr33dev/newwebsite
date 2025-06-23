@@ -2,20 +2,22 @@
 
 session_start();
 
+var_dump($_SESSION);
+
 if ((int)$_POST['age'] == 0) {
-    $_SESSION['error6'] = 'Age cannot be 0';
+    $_SESSION['error1'] = 'Age cannot be 0';
     header('Location: login.php');
     exit;
 }
 
 if ((int)$_POST['age'] < 16) {
-    $_SESSION['error7'] = 'You must be at least 16 years old';
+    $_SESSION['error2'] = 'You must be at least 16 years old';
     header('Location: login.php');
     exit;
 }
 
 if ((int)$_POST['age'] > 120) {
-    $_SESSION['error8'] = 'You must be less than 120 years old';
+    $_SESSION['error3'] = 'You must be less than 120 years old';
     header('Location: login.php');
     exit;
 }

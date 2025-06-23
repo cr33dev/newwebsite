@@ -1,26 +1,127 @@
 :root {
+    --header-color: #2f3132;
     --error-banner-color: #e74c3c;
     --primary-color: #3498db;
     --secondary-color: #2ecc71;
     --text-color: #333;
     --background-color: #f4f4f4;
     --primary-text-color: #ffffff;
+    --base: #e1004b;
+    --shadow: #40005c;
+    --highlight: #ffb8d2;
+    --darkpurple: #5c00a3;
+    --lightpurple: #b993d6;
+    --babyblue: #8ca6db;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
 }
+
 body {
     font-family: Arial, sans-serif;
     background-color: var(--primary-color);
     color: var(--primary-text-color);
 }
+
 .error {
     background-color: var(--error-banner-color);
     color: var(--primary-text-color);
     padding: 10px;
     text-align: center;
     font-weight: bold;
+}
+
+header {
+    background-color: var(--darkpurple);
+    color: var(--primary-text-color);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+header h1 {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: var(--base);
+    text-shadow: 0.5rem 0.5rem var(--shadow);
+    font-size: 7rem;
+    margin: 0;
+}
+
+.form-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 2rem;;
+}
+
+form {
+    margin: 4rem;
+    border: 2px solid var(--darkpurple);
+    border-radius: 2rem;
+    background: linear-gradient(135deg, var(--lightpurple), var(--babyblue));
+    color: var(--white);
+    padding: 20px;
+    align-self: center;
+    width: 80%;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-columns-wrapper {
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.form-column label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+}
+
+.form-column label input {
+    margin-left: 1.5em;
+    flex: 1 1 auto;
+    min-width: 150px;
+}
+
+.form-submit {
+    display: flex;
+    justify-content: center;
+}
+
+.form-submit input {
+    background: var(--secondary-color);
+
+}
+
+label {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+input {
+    padding: 0.5em;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    border: 2px solid var(--darkpurple);
+}
+footer p{
+    text-align: center;
+    background: var(--darkpurple);
+    color: var(--primary-text-color);
 }
