@@ -2,33 +2,44 @@
 
 session_start();
 
+// dumps the already existing session data
 var_dump($_SESSION);
 
-if ((int)$_POST['age'] == 0) {
-    $_SESSION['error1'] = 'Age cannot be 0';
-    header('Location: login.php');
-    exit;
-}
+// makes a session variable for the username
 
-if ((int)$_POST['age'] < 16) {
-    $_SESSION['error2'] = 'You must be at least 16 years old';
-    header('Location: login.php');
-    exit;
-}
+$username = trim($_POST['username']);
+$password = $_POST['password'];
 
-if ((int)$_POST['age'] > 120) {
-    $_SESSION['error3'] = 'You must be less than 120 years old';
-    header('Location: login.php');
-    exit;
-}
-
-$_SESSION['last_name'] = $_POST['last_name'];
-$_SESSION['password'] =$_POST['password'];
-$_SESSION['first_name'] = $_POST['first_name'];
-$_SESSION['username'] =$_POST['username'];
-$_SESSION['age'] = $_POST['age'];
+// dumps the post data
 var_dump($_POST);
 
-header('Location: index.php');
+// sql connect
 
-exit;
+$sql = new mysqli('localhost','root','','imagehub'); // connects to the database "imagehub" that has my users table over localhost with the root user (no password)
+if ($sql->connect_error) { // asks if the connection was successful
+    die("Connection failed: " . $sql->connect_error); // kills the php section if failed
+}
+
+$attemptlogin = $sql->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
+$attemptlogin->bind_param("ss", $username, $password);
+$attemptlogin->execute();
+$result = $attemptlogin->get_result();
+
+if ($result->num_rows === 1) {
+    $session = $result->fetch_assoc();
+    $_SESSION['username'] = $session['username'];
+    $_SESSION['email'] = $session['email'];
+    $_SESSION['password'] = $session['password'];
+    $_SESSION['first_name'] = $session['first_name'];
+    $_SESSION['last_name'] = $session['last_name'];
+    $_SESSION['age'] = $session['age'];
+    $_SESSION['email'] = $session['email'];
+    $_SESSION['id'] = $session['id'];
+    header('Location: index.php');
+    exit();
+} else {
+    // login fail
+    $_SESSION['error1'] = 'Invalid username or password';
+    header('Location: login.php');
+    exit;
+}

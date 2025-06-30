@@ -1,19 +1,37 @@
-:root {
-    --header-color: #2f3132;
-    --error-banner-color: #e74c3c;
-    --primary-color: #3498db;
-    --secondary-color: #2ecc71;
-    --text-color: #333;
-    --background-color: #f4f4f4;
-    --primary-text-color: #ffffff;
-    --base: #e1004b;
-    --shadow: #40005c;
-    --highlight: #ffb8d2;
-    --darkpurple: #5c00a3;
-    --lightpurple: #b993d6;
-    --babyblue: #8ca6db;
+@media (prefers-color-scheme: light) {
+    :root {
+        --header-color: #2f3132;
+        --error-banner-color: #e74c3c;
+        --primary-color: #3498db;
+        --secondary-color: #2ecc71;
+        --text-color: #333333;
+        --background-color: #f4f4f4;
+        --primary-text-color: #ffffff;
+        --base: #e1004b;
+        --shadow: #40005c;
+        --highlight: #ffb8d2;
+        --darkpurple: #5c00a3;
+        --lightpurple: #b993d6;
+        --babyblue: #8ca6db;
+    }
 }
-
+@media (prefers-color-scheme: dark) {
+    :root {
+        --header-color: #1a1a1a;
+        --error-banner-color: #c0392b;
+        --primary-color: #1f618d;
+        --secondary-color: #196f3d;
+        --text-color: #e6e6e6;
+        --background-color: #121212;
+        --primary-text-color: #f0f0f0;
+        --base: #b30039;
+        --shadow: #2b003d;
+        --highlight: #cc94a9;
+        --darkpurple: #400072;
+        --lightpurple: #8c6ca3;
+        --babyblue: #5d7ca3;
+    }
+}
 * {
     margin: 0;
     padding: 0;
@@ -48,7 +66,7 @@ header h1 {
     font-weight: bold;
     color: var(--base);
     text-shadow: 0.5rem 0.5rem var(--shadow);
-    font-size: 7rem;
+    font-size: 8rem;
     margin: 0;
 }
 
@@ -56,16 +74,16 @@ header h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
-    gap: 2rem;;
+    flex-direction: column;
+    gap: 1rem;;
 }
 
 form {
-    margin: 4rem;
+    margin: 1.5rem;
     border: 2px solid var(--darkpurple);
     border-radius: 2rem;
     background: linear-gradient(135deg, var(--lightpurple), var(--babyblue));
-    color: var(--white);
+    color: var(--background-color);
     padding: 20px;
     align-self: center;
     width: 80%;
@@ -74,17 +92,10 @@ form {
     flex-direction: column;
 }
 
-.form-columns-wrapper {
-    align-self: center;
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-}
-
 .form-column {
     display: flex;
     flex-direction: column;
-    width: fit-content;
+    width: 100%;
 }
 
 .form-column label {
@@ -94,7 +105,7 @@ form {
 }
 
 .form-column label input {
-    margin-left: 1.5em;
+    margin-left: 1em;
     flex: 1 1 auto;
     min-width: 150px;
 }
@@ -105,23 +116,111 @@ form {
 }
 
 .form-submit input {
+    width: 100%;
     background: var(--secondary-color);
-
 }
 
 label {
     font-weight: bold;
     font-size: 2rem;
+    width: 80%;
+    align-self: center;
 }
 
 input {
-    padding: 0.5em;
+    padding: 0.5rem;
     font-size: 1.5rem;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
     border: 2px solid var(--darkpurple);
+    background: #fff;
+    color: var(--darkpurple);
+    outline: none;
 }
-footer p{
+
+input:focus {
+    border-color: var(--base);
+}
+
+footer p {
     text-align: center;
     background: var(--darkpurple);
     color: var(--primary-text-color);
+}
+.sub-heading {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--shadow);
+    margin-top: 1rem;
+}
+.images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--background-color);
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.image-container p {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin: 0;
+}
+.directory-flexbox {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center; /* Centers items horizontally */
+    gap: 1.2rem; /* Adds space between p elements */
+    align-items: center; /* Centers items vertically */
+}
+.directory-flexbox p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--babyblue);
+}
+.left {
+    justify-content: left !important;
+    text-align: left !important;
+    margin-left: 2rem;
+    margin-top: 2rem;
+}
+.highlight-var {
+    color: var(--base);
+}
+@media (max-width: 768px) {
+
+    header h1 {
+        font-size: 5rem;
+    }
+
+    label {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    header h1 {
+        font-size: 7rem;
+    }
+
+    label {
+        font-size: 2rem;
+    }
 }

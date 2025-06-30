@@ -1,0 +1,6 @@
+# Block all file access directly (eg http://localhost:8080/user_images/lol/1.png)
+Order Deny,Allow
+Deny from all
+
+# Prevent directory listing (showing the directory in html)
+Options -Indexes
