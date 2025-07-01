@@ -32,6 +32,22 @@ $last_name = trim($last_name); // strips any spaces (no spaces)
 $age = (int)$_POST['age'];
 $email = $_POST['email'];
 
+// sanitizes all fields
+
+$username = htmlspecialchars($username); // sanitizes the username
+$password = htmlspecialchars($password); // sanitizes the password
+$first_name = htmlspecialchars($first_name); // sanitizes the first name
+$last_name = htmlspecialchars($last_name); // sanitizes the last name
+$age = htmlspecialchars($age); // sanitizes the age
+$email = htmlspecialchars($email); // sanitizes the email
+
+// encrypts password
+
+$password = password_hash($password, PASSWORD_DEFAULT);
+
+// encrypt all other fields
+
+
 // sql connect
 
 $sql = new mysqli('localhost','root','','imagehub'); // connects to the database "imagehub" that has my users table over localhost with the root user (no password)

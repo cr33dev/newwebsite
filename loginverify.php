@@ -10,6 +10,11 @@ var_dump($_SESSION);
 $username = trim($_POST['username']);
 $password = $_POST['password'];
 
+// sql is encrypted so we need to sanitize the input
+
+$username = htmlspecialchars($username); // sanitizes the username
+$password = htmlspecialchars($password); // sanitizes the password
+
 // dumps the post data
 var_dump($_POST);
 
@@ -20,16 +25,21 @@ if ($sql->connect_error) { // asks if the connection was successful
     die("Connection failed: " . $sql->connect_error); // kills the php section if failed
 }
 
-$attemptlogin = $sql->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
-$attemptlogin->bind_param("ss", $username, $password);
+$attemptlogin = $sql->prepare("SELECT * FROM users WHERE username = ?");
+$attemptlogin->bind_param("s", $username);
 $attemptlogin->execute();
 $result = $attemptlogin->get_result();
 
 if ($result->num_rows === 1) {
     $session = $result->fetch_assoc();
+    if (password_verify($password, $session['password']) === false) {
+        // password does not match
+        $_SESSION['error1'] = 'Invalid username or password';
+        header('Location: login.php');
+        exit;
+    }
     $_SESSION['username'] = $session['username'];
     $_SESSION['email'] = $session['email'];
-    $_SESSION['password'] = $session['password'];
     $_SESSION['first_name'] = $session['first_name'];
     $_SESSION['last_name'] = $session['last_name'];
     $_SESSION['age'] = $session['age'];
