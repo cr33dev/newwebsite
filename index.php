@@ -12,6 +12,7 @@ $session_age = $_SESSION['age'];
 $session_first_name = $_SESSION['first_name'];
 $session_last_name = $_SESSION['last_name'];
 $session_email = $_SESSION['email'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

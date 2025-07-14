@@ -20,6 +20,13 @@ if (isset($_SESSION['error1'])) {
 if ($error !== null) {
     echo "<p class='error'>{$error}. please try again</p>"; //can use curly braces to display the error
 }
+
+
+$filedir = ;
+
+mkdir($filedir);
+
+
 ?>
 
 <html lang="en">
@@ -62,7 +69,7 @@ if ($error !== null) {
             </div>
             <div class="form-column">
                 <label> Password <input type="password" name="password" required> </label><br>
-                <label> Email <input type="text" name="email" required></label><br>
+                <label> Email <input type="email" name="email" required></label><br>
                 <label> Last name <input type="text" name="last_name" required></label><br>
             </div>
         </div>
