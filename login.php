@@ -22,10 +22,6 @@ if ($error !== null) {
 }
 
 
-$filedir = ;
-
-mkdir($filedir);
-
 
 ?>
 
