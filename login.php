@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <?php
 session_start();
 if (isset($_SESSION['error1'])) {
@@ -17,14 +15,8 @@ if (isset($_SESSION['error1'])) {
 } else {
     $error = null;
 }
-if ($error !== null) {
-    echo "<p class='error'>{$error}. please try again</p>"; //can use curly braces to display the error
-}
-
-
-
 ?>
-
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -33,12 +25,21 @@ if ($error !== null) {
     <meta charset="UTF-8">
 
     <title>Login</title>
-
 </head>
-
+<body>
+<?php
+if (isset($_SESSION['success'])) {
+$success = $_SESSION['success'];
+unset($_SESSION['success']);
+echo "<p class='success'> account created successfully, please log in </p>";
+}
+if ($error !== null) {
+    echo "<p class='error'>" . htmlspecialchars($error) . ". Please try again</p>";
+}
+?>
 <header> <h1> ImageHub </h1> </header>
 
-<body>
+
 
 <div class="form-wrap">
     <form action="loginverify.php" method="post">
@@ -49,8 +50,9 @@ if ($error !== null) {
             </div>
             <br>
             <div class="form-submit">
-                <label><input type="submit" value="log in"></label>
+                <input type="submit" value="log in">
             </div>
+
         </div>
     </form>
 </div>
@@ -71,7 +73,7 @@ if ($error !== null) {
         </div>
         <br>
         <div class="form-submit">
-            <label><input type="submit" value="create account"></label>
+            <input type="submit" value="create account">
         </div>
     </form>
 </div>

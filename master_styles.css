@@ -2,6 +2,7 @@
     :root {
         --header-color: #2f3132;
         --error-banner-color: #e74c3c;
+        --success-banner-color: #2ecc71;
         --primary-color: #3498db;
         --secondary-color: #2ecc71;
         --text-color: #333333;
@@ -52,7 +53,13 @@ body {
     text-align: center;
     font-weight: bold;
 }
-
+.success {
+    background-color: var(--success-banner-color);
+    color: var(--primary-text-color);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
 header {
     background-color: var(--darkpurple);
     color: var(--primary-text-color);

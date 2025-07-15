@@ -1,18 +1,15 @@
 <?php
 session_start();
-
 if ($_SESSION == null) {
     header('Location: login.php');
     exit;
 }
-
 $session_name = $_SESSION['username'];
 $session_id = $_SESSION['id'];
 $session_age = $_SESSION['age'];
 $session_first_name = $_SESSION['first_name'];
 $session_last_name = $_SESSION['last_name'];
 $session_email = $_SESSION['email'];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,5 +31,3 @@ $session_email = $_SESSION['email'];
 </div>
 </body>
 </html>
-
-
